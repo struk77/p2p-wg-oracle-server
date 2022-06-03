@@ -1,0 +1,21 @@
+- name: Install wireguard-tools
+  yum:
+    name: 'wireguard-tools'
+    state: present
+  become_user: root
+
+- name: Deploy wireguard config
+  template:
+    src: templates/wg0.conf.j2
+    dest: /etc/wireguard/wg0.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become_user: root
+
+- name: Enable and start wireguard
+  ansible.builtin.systemd:
+    name: wg-quick@wg0
+    state: started
+    enabled: yes
+  become_user: root

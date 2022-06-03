@@ -1,0 +1,13 @@
+[Interface]
+Address = {{ WG_IP_ADRESS }}
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE;
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o wg0 -j MASQUERADE;
+ListenPort = {{ WG_LISTEN_PORT }}
+PrivateKey = {{ PRIVATEKEY }}
+
+{% for peer in peers %}
+[Peer]
+PublicKey = {{ peers[peer].PublicKey }}
+Endpoint = {{ peers[peer].Endpoint }}
+AllowedIPs = {{ peers[peer].AllowedIPs }}
+{% endfor %}

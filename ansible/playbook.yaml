@@ -1,0 +1,20 @@
+---
+- name: Deploy wireguard server
+  hosts: all
+  become: yes
+  pre_tasks:
+
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+      become_user: root
+    
+    - name: Enable IPv4 forwarding
+      ansible.posix.sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'
+        sysctl_set: yes
+
+  roles:
+    - wireguard 

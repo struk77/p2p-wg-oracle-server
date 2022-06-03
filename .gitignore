@@ -1,0 +1,12 @@
+### Ignore terraform files
+
+.terraform
+*.tfstate
+*.tfstate.*
+*.auto.tfvars
+.terraform.*
+
+backend.tf
+
+### Ignore OS files
+.DS_*
