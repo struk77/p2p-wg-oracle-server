@@ -10,3 +10,6 @@ backend.tf
 
 ### Ignore OS files
 .DS_*
+
+### Ansible variables
+server.yaml

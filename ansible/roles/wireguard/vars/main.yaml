@@ -1,5 +1,0 @@
-peers:
-  peer0:
-    PublicKey: {{ WG_PEER0_PUBLICKEY }}
-    Endpoint: {{ WG_PEER0_ENDPOINT }}
-    AllowedIPs: {{ WG_PEER0_IPS }}

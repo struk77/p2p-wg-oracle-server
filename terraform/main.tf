@@ -4,7 +4,7 @@
 # }
 
 data "oci_identity_availability_domain" "ad" {
-  compartment_id = var.tenancy_ocid
+  compartment_id = var.compartment_ocid
   ad_number      = 1
 }
 
@@ -31,8 +31,8 @@ data "oci_core_images" "wg_images" {
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
     connection {
-      host = oci_core_instance.wg_server.public_ip
-      user = "opc"
+      host        = oci_core_instance.wg_server.public_ip
+      user        = "opc"
       private_key = file(var.private_key_path)
     }
 
@@ -40,6 +40,6 @@ resource "null_resource" "provisioner" {
   }
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u opc -i '${oci_core_instance.wg_server.public_ip},' --private-key=${var.private_key_path} ../ansible/playbook.yaml -e 'PRIVATEKEY=${var.wg_private_key} WG_IP_ADRESS=${var.wg_ip_address} WG_LISTEN_PORT=${var.wg_listen_port} WG_PEER0_PUBLICKEY=${var.wg_peer0_publickey} WG_PEER0_ENDPOINT=${var.wg_peer0_endpoint} WG_PEER0_IPS=${var.wg_peer0_ips}'"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u opc -i '${oci_core_instance.wg_server.public_ip},' --private-key=${var.private_key_path} ../ansible/playbook.yaml -e 'WG_LISTEN_PORT=${var.wg_listen_port}' -v"
   }
 }

@@ -1,3 +1,10 @@
+- name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+  include_vars:
+    dir: vars
+    extensions:
+      - 'yaml'
+    ignore_unknown_extensions: True
+
 - name: Install wireguard-tools
   yum:
     name: 'wireguard-tools'
@@ -16,6 +23,6 @@
 - name: Enable and start wireguard
   ansible.builtin.systemd:
     name: wg-quick@wg0
-    state: started
+    state: restarted
     enabled: yes
   become_user: root

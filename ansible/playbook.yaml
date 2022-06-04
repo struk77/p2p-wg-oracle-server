@@ -15,6 +15,14 @@
         name: net.ipv4.ip_forward
         value: '1'
         sysctl_set: yes
+      become_user: root
+
+    - name: Disable firewalld
+      systemd:
+        name: firewalld
+        enabled: no
+        state: stopped
+      become_user: root
 
   roles:
     - wireguard 

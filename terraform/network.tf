@@ -40,12 +40,7 @@ resource "oci_core_security_list" "wg_security_list" {
   display_name   = "wgSecurityList"
 
   egress_security_rules {
-    protocol    = "6"
-    destination = "0.0.0.0/0"
-  }
-
-  egress_security_rules {
-    protocol    = "17"
+    protocol    = "all"
     destination = "0.0.0.0/0"
   }
 

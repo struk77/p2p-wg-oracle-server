@@ -1,0 +1,14 @@
+server:
+  Address: 10.10.10.254/24
+  PrivateKey: aaabbbcccdddeee1274363754gdfgfgg=
+
+peers:
+  peer1:
+    PublicKey: aaabbbcccdddeee1274363754gdfgfgg=
+    Endpoint: 8.8.8.8:51820 # optional
+    AllowedIPs: 10.10.10.1/32
+  peer2:
+    PublicKey: aaabbbcccdddeee1274363754gdfgfgg=
+    Endpoint: 8.8.8.8:51820 # optional
+    AllowedIPs: 10.10.10.2/32
+    

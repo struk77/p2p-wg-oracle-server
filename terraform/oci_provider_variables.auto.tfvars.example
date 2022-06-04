@@ -1,16 +1,7 @@
-tenancy_ocid     = "ocid1.tenancy..."
 user_ocid        = "ocid1.user.oc1..."
-compartment_ocid = "ocid1.tenancy.oc1..."
+compartment_ocid = "ocid1.tenancy.oc1..." ### the same as tenancy_ocid
 fingerprint      = "aa:aa:aa:aa..."
 private_key_path = "~/.oci/oci_api_key.pem"
 region           = "eu-frankfurt-1"
 ingress_ip_ssh   = "0.0.0.0/0"
 ingress_ip_app   = "0.0.0.0/0"
-
-wg_private_key   = "yuor_wg_private_key="
-wg_ip_address    = "10.0.0.1/24"
-wg_listen_port   = "51820"
-
-wg_peer0_publickey = "publickey...="
-wg_peer0_endpoint  = "127.0.0.1:51820"
-wg_peer0_ips       = "10.0.0.2/32"
